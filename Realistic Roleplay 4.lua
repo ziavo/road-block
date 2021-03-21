@@ -29,16 +29,23 @@ do -- Main Scope
         
         MainTab:AddSwitch("God Mode", hook);
     end
-    do -- Generate Money Scope
+    --[[do -- Generate Money Scope
         local hook = function(bool)
             _G.GenerateMoney = bool
             
             if _G.GenerateMoney then
-                repeat wait() game:GetService("Workspace").Events.ATM:FireServer(1, .5) until not _G.GenerateMoney
+                repeat wait(1) for i = 1, 100 do game:GetService("Workspace").Events.ATM:FireServer(1, .5) end until not _G.GenerateMoney
             end
         end
         
         MainTab:AddSwitch("Generate Money", hook);
+    end]]
+    do -- Infinite Money Scope
+        local hook = function(bool)
+            game:GetService("Workspace").Events.ATM:FireServer(2, -99999999999)
+        end
+        
+        MainTab:AddButton("Infinite Money", hook);
     end
     do -- Infinite Ammo Scope
         local hook = function()
